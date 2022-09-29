@@ -12,6 +12,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           "Mission 1",
           style: Theme.of(context)
@@ -33,20 +34,28 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Column(
           children: [
-            Stack(
-              children: [
-                Image.asset("assets/images/adidas.png"),
-                const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: FavoriteButton(),
+            Flexible(
+              flex: 2,
+              child: Stack(
+                children: [
+                  Image.asset(
+                    "assets/images/adidas.png",
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
                   ),
-                ),
-              ],
+                  const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: FavoriteButton(),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(
-              height: 160,
+            Flexible(
+              flex: 2,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
@@ -68,9 +77,6 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Image.asset(
                             shoes.path,
-                            width: 128,
-                            height: 128,
-                            fit: BoxFit.cover,
                           ),
                         ),
                       ],
@@ -89,12 +95,17 @@ class _HomePageState extends State<HomePage> {
                     .copyWith(fontWeight: FontWeight.w700),
               ),
             ),
-            const Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  "adidas Online Store menawarkan perlengkapan terbaru dan terbaik yang ditawarkan adidas dalam setiap momen. Saat Anda berbelanja di adidas, Anda bisa yakin bahwa selama lebih dari tujuh dekade, produk adidas selalu mengutamakan keunggulan. Ciri khas kami adalah selalu mempersembahkan produk dengan standar kualitas, teknologi, dan inovasi terbaik.\n\nORIGINALS\nadidas Originals: Merefleksikan warisan adidas yang tak lekang oleh waktu. Inovatif, mempertahankan ciri klasik, dan selalu autentik, produk adidas Originals ditunjukkan dengan Trefoil yang diluncurkan pada Olimpiade tahun 1972 di Munich.\n\nSPORTS PERFORMANCE\nSemua produk adidas tidak hanya memiliki tampilan yang menarik, namun juga menawarkan performa tak tertandingi. Di divisi Performance, kami terus berupaya untuk menawarkan produk olahraga paling fungsional dengan performa terbaik bagi atlet dalam semua kategori olahraga. Semangat dan motivasi kami adalah untuk membantu atlet yang menuntut performa tertinggi disamping faktor pendukung lainnya. Produk Performance didesain menggunakan terobosan teknologi terbaru\n\nTEKNOLOGI\nInovasi produk unggulan kami secara terus menerus berupaya untuk mendukung atlet dalam meraih level performa yang lebih baik. Pakaian dan sepatu kami menggunakan berbagai teknologi yang dideskripsikan pada setiap halaman produk Olahraga\n\nUKURAN\nKami menyediakan bagan ukuran pada Halaman Detail Produk yang akan membantu Anda untuk membandingkan ukuran yang tercantum pada halaman produk dengan ukuran yang mungkin lebih familiar bagi Anda. Jika Anda menerima produk, namun ukurannya tidak sesuai, Anda dapat mengirimkannya kembali dan melakukan pemesanan ulang dengan ukuran yang berbeda. Silakan baca Kebijakan Retur kami untuk detail lebih lanjut.",
-                ),
+            Flexible(
+              flex: 4,
+              child: ListView(
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      "adidas Online Store menawarkan perlengkapan terbaru dan terbaik yang ditawarkan adidas dalam setiap momen. Saat Anda berbelanja di adidas, Anda bisa yakin bahwa selama lebih dari tujuh dekade, produk adidas selalu mengutamakan keunggulan. Ciri khas kami adalah selalu mempersembahkan produk dengan standar kualitas, teknologi, dan inovasi terbaik.\n\nORIGINALS\nadidas Originals: Merefleksikan warisan adidas yang tak lekang oleh waktu. Inovatif, mempertahankan ciri klasik, dan selalu autentik, produk adidas Originals ditunjukkan dengan Trefoil yang diluncurkan pada Olimpiade tahun 1972 di Munich.\n\nSPORTS PERFORMANCE\nSemua produk adidas tidak hanya memiliki tampilan yang menarik, namun juga menawarkan performa tak tertandingi. Di divisi Performance, kami terus berupaya untuk menawarkan produk olahraga paling fungsional dengan performa terbaik bagi atlet dalam semua kategori olahraga. Semangat dan motivasi kami adalah untuk membantu atlet yang menuntut performa tertinggi disamping faktor pendukung lainnya. Produk Performance didesain menggunakan terobosan teknologi terbaru\n\nTEKNOLOGI\nInovasi produk unggulan kami secara terus menerus berupaya untuk mendukung atlet dalam meraih level performa yang lebih baik. Pakaian dan sepatu kami menggunakan berbagai teknologi yang dideskripsikan pada setiap halaman produk Olahraga\n\nUKURAN\nKami menyediakan bagan ukuran pada Halaman Detail Produk yang akan membantu Anda untuk membandingkan ukuran yang tercantum pada halaman produk dengan ukuran yang mungkin lebih familiar bagi Anda. Jika Anda menerima produk, namun ukurannya tidak sesuai, Anda dapat mengirimkannya kembali dan melakukan pemesanan ulang dengan ukuran yang berbeda. Silakan baca Kebijakan Retur kami untuk detail lebih lanjut.",
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -113,7 +124,6 @@ class FavoriteButton extends StatefulWidget {
 
 class _FavoriteButtonState extends State<FavoriteButton> {
   bool click = false;
-  bool snackbar = false;
 
   @override
   Widget build(BuildContext context) {
