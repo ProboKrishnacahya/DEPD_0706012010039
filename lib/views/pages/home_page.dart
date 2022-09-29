@@ -28,14 +28,16 @@ class _HomePageState extends State<HomePage> {
               Style.blueGrey900,
               Style.grey800,
             ],
-            begin: Alignment.topLeft,
-            end: Alignment.topRight,
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
           ),
         ),
         child: Column(
           children: [
             Flexible(
-              flex: 2,
+              flex: MediaQuery.of(context).orientation == Orientation.landscape
+                  ? 4
+                  : 2,
               child: Stack(
                 children: [
                   Image.asset(
@@ -44,18 +46,18 @@ class _HomePageState extends State<HomePage> {
                     height: double.infinity,
                     fit: BoxFit.cover,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: FavoriteButton(),
-                    ),
-                  ),
+                  const Positioned(
+                    top: 16,
+                    right: 16,
+                    child: FavoriteButton(),
+                  )
                 ],
               ),
             ),
             Flexible(
-              flex: 2,
+              flex: MediaQuery.of(context).orientation == Orientation.landscape
+                  ? 4
+                  : 2,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
@@ -85,14 +87,17 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              child: Text(
-                "TENTANG PRODUK ADIDAS",
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium!
-                    .copyWith(fontWeight: FontWeight.w700),
+            Flexible(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                child: Text(
+                  "TENTANG PRODUK ADIDAS",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineMedium!
+                      .copyWith(fontWeight: FontWeight.w700),
+                ),
               ),
             ),
             Flexible(
@@ -127,18 +132,21 @@ class _FavoriteButtonState extends State<FavoriteButton> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipOval(
-      child: Material(
-        child: Tooltip(
-          message: "Favorit",
-          child: InkWell(
-            onTap: () => setState(() => click = !click),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Icon(
-                click ? Icons.favorite : Icons.favorite_outline,
-                color: Style.red500,
-              ),
+    return Material(
+      borderRadius: BorderRadius.circular(48),
+      child: Tooltip(
+        message: "Favorit",
+        child: InkWell(
+          onTap: () => setState(() => click = !click),
+          onLongPress: () => setState(() => click = !click),
+          customBorder: const CircleBorder(),
+          child: Container(
+            alignment: Alignment.center,
+            width: 48,
+            height: 48,
+            child: Icon(
+              click ? Icons.favorite : Icons.favorite_outline,
+              color: Style.red500,
             ),
           ),
         ),
