@@ -36,6 +36,7 @@ class _BookingPageState extends State<BookingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: BackButton(
           color: Style.lime800,
@@ -69,7 +70,7 @@ class _BookingPageState extends State<BookingPage> {
                           setState(() {});
                         },
                         decoration: const InputDecoration(
-                          hintText: 'Full Name',
+                          hintText: 'John Doe',
                           labelText: 'Full Name',
                           prefixIcon: Icon(Icons.account_circle_outlined),
                           border: OutlineInputBorder(),
@@ -87,7 +88,7 @@ class _BookingPageState extends State<BookingPage> {
                           setState(() {});
                         },
                         decoration: const InputDecoration(
-                          hintText: 'Email',
+                          hintText: 'johndoe@gmail.com',
                           labelText: 'Email',
                           prefixIcon: Icon(Icons.email_outlined),
                           border: OutlineInputBorder(),
@@ -105,7 +106,7 @@ class _BookingPageState extends State<BookingPage> {
                           setState(() {});
                         },
                         decoration: const InputDecoration(
-                          hintText: 'Phone Number',
+                          hintText: '08123456789',
                           labelText: 'Phone Number',
                           prefixIcon: Icon(Icons.phone_android_outlined),
                           border: OutlineInputBorder(),
@@ -123,7 +124,7 @@ class _BookingPageState extends State<BookingPage> {
                           setState(() {});
                         },
                         decoration: const InputDecoration(
-                          hintText: 'City',
+                          hintText: 'Surabaya',
                           labelText: 'City',
                           prefixIcon: Icon(Icons.location_city_outlined),
                           border: OutlineInputBorder(),
@@ -136,10 +137,10 @@ class _BookingPageState extends State<BookingPage> {
                         width: double.infinity,
                         child: ElevatedButton.icon(
                           onPressed: () {
-                            if (fullNameController.toString().isEmpty ||
-                                emailController.toString().isEmpty ||
-                                phoneNumberController.toString().isEmpty ||
-                                cityController.toString().isEmpty) {
+                            if (fullNameController.text.isEmpty ||
+                                emailController.text.isEmpty ||
+                                phoneNumberController.text.isEmpty ||
+                                cityController.text.isEmpty) {
                               showDialog(
                                 barrierDismissible: false,
                                 context: context,
@@ -180,7 +181,8 @@ class _BookingPageState extends State<BookingPage> {
                                           Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const HomePage(),
+                                          builder: (context) =>
+                                              const HomePage(),
                                         ),
                                       ),
                                       child: const Text('OK'),
