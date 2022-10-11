@@ -8,7 +8,7 @@ class FavoriteButton extends StatefulWidget {
 }
 
 class _FavoriteButtonState extends State<FavoriteButton> {
-  bool click = false;
+  bool isClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +17,15 @@ class _FavoriteButtonState extends State<FavoriteButton> {
       child: Tooltip(
         message: "Favorite",
         child: InkWell(
-          onTap: () => setState(() => click = !click),
-          onLongPress: () => setState(() => click = !click),
+          onTap: () => setState(() => isClicked = !isClicked),
+          onLongPress: () => setState(() => isClicked = !isClicked),
           customBorder: const CircleBorder(),
           child: Container(
             alignment: Alignment.center,
             width: 48,
             height: 48,
             child: Icon(
-              click ? Icons.favorite : Icons.favorite_outline,
+              isClicked ? Icons.favorite : Icons.favorite_outline,
               color: Style.red500,
             ),
           ),

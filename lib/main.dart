@@ -31,14 +31,18 @@ class MyApp extends StatelessWidget {
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
-          labelStyle: TextStyle(color: Style.lime800),
+          labelStyle: TextStyle(color: Style.grey500),
+          floatingLabelStyle: TextStyle(color: Style.lime800),
           hintStyle: TextStyle(color: Style.grey500),
           iconColor: Style.grey500,
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Style.grey500),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Style.lime800),
+            borderSide: BorderSide(
+              color: Style.lime800,
+              width: 2,
+            ),
           ),
         ),
         appBarTheme: AppBarTheme(
