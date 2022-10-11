@@ -2,7 +2,7 @@
 
 > IMT01307501-A Digital Entrepreneurship Product Development
 
-Flutter Widgets (Part 1) Assignment oleh
+Flutter Widgets (Part 2) Assignment oleh
 - NIM: 0706012010039
 - Nama: Probo Krishnacahya
 
